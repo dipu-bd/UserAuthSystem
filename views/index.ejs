@@ -1,11 +1,59 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="<%= site_lang %>" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title><%= site_title %></title>
+    <link rel='stylesheet' href='/styles/style.css'/>
+
+    <!-- default meta tags -->
+    <meta charset="UTF-8"/>
+    <meta name="language" content="<%= site_lang %>">
+    <meta name="description" content="<%= site_description %>"/>
+
+    <!-- open graph meta tags -->
+    <!-- more here: http://ogp.me/ -->
+    <meta name="og:title" content="<%= site_title %>"/>
+    <meta name="og:type" content="<%= site_type %>"/>
+    <meta name="og:image" content="<%= site_image %>"/>
+    <meta name="og:url" content="<%= site_url %>"/>
+    <meta name="og:site_name" content="<%= site_name %>"/>
+    <meta name="og:description" content="<%= site_description %>"/>
+
+</head>
+<body>
+
+<div align="center">
+
+    <h1><%= site_title %></h1>
+    <hr width="400px"/>
+
+    <div align="center">
+        <% include components/menubar.ejs %>
+    </div>
+
+    <div class="form-holder">
+        <p id="response" class="info"></p>
+
+        <% if(page === "login") { %>
+        <% include components/login.ejs %>
+        <% } else if(page === "register") { %>
+        <% include components/register.ejs %>
+        <% } %>
+    </div>
+
+    <% if(page === "home") { %>
+    <div class="home-info">
+        <p>
+            Welcome to <b><%= site_title %></b>.<br/>
+            <em><%= site_description %> </em> <br/>
+            Please click on <b>Login</b> to log in, or <b>Register</b> to register your name to the system.
+        </p>
+
+        <p>Thank you!</p>
+    </div>
+    <% } %>
+
+    <script type="text/javascript" src="/scripts/functions.js"></script>
+</div>
+
+</body>
 </html>

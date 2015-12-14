@@ -1,0 +1,11 @@
+<%
+var loginUrl = "/login";
+var registerUrl = "/register";
+
+if (page === "login")  loginUrl = '#';
+else if (page === "register") registerUrl = '#';
+%>
+
+<a href="/" class="menu">HOME</a> |
+<a href="<%= loginUrl %>" class="menu">Login</a> |
+<a href="<%= registerUrl %>" class="menu">Register</a>
