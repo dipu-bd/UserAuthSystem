@@ -4,19 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mysql = require('mysql');
 
-//route variables
+// route variables
 var routes = require('./routes/index');
 
-//configurations
-var configDB = require('./config/db');
-
-//create app
+// create app
 var app = express();
-
-// database setup
-var pool = mysql.createPool(configDB.options);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +23,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// set up routes
 app.use('/', routes);
 
 // catch 404 and forward to error handler
@@ -40,15 +34,10 @@ app.use(function (req, res, next) {
 });
 
 // error handlers
-pool.on('error', function (err) {
-    console.log("!!MySQL Error: " + err.errno + " " + err.code + " " + (fatal ? "{FATAL}" : "{NOT FATAL}"));
-    console.log(err);
-});
 
-// development error handler
-// will print stacktrace
+// development error handler will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function (err, req, res) {
+    app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -57,9 +46,8 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktrace leaked to user
-app.use(function (err, req, res) {
+// production error handler no stacktrace leaked to user
+app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
@@ -69,4 +57,3 @@ app.use(function (err, req, res) {
 
 
 module.exports = app;
-app.locals.pool = pool;

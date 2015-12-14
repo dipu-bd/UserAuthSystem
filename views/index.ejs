@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="<%= site_lang %>" xmlns="http://www.w3.org/1999/html">
-<head>
-    <title><%= site_title %></title>
-    <link rel='stylesheet' href='/styles/style.css'/>
 
+<head>
     <!-- default meta tags -->
     <meta charset="UTF-8"/>
     <meta name="language" content="<%= site_lang %>">
@@ -18,42 +16,51 @@
     <meta name="og:site_name" content="<%= site_name %>"/>
     <meta name="og:description" content="<%= site_description %>"/>
 
+
+    <title><%= site_title %></title>
+    <link rel='stylesheet' href='/styles/style.css'/>
+    <script src="/scripts/md5.js"></script>
+    <script type="text/javascript" src="/scripts/functions.js"></script>
+
 </head>
-<body>
+
+<body
+        <% if(page === "profile") { %>
+        onload="setGravatarProfile('<%= user.email %>');"
+        <% } %>
+>
 
 <div align="center">
 
     <h1><%= site_title %></h1>
     <hr width="400px"/>
 
-    <div align="center">
+    <div align="center" style="padding: 20px">
         <% include components/menubar.ejs %>
     </div>
 
-    <div class="form-holder">
-        <p id="response" class="info"></p>
-
+    <% if(page === "home") { %>
+    <% include components/home.ejs %>
+    <% } else if(page === "profile") { %>
+    <% include components/profile.ejs %>
+    <% } else { %>
+    <div class="form-style">
         <% if(page === "login") { %>
         <% include components/login.ejs %>
         <% } else if(page === "register") { %>
         <% include components/register.ejs %>
         <% } %>
-    </div>
 
-    <% if(page === "home") { %>
-    <div class="home-info">
-        <p>
-            Welcome to <b><%= site_title %></b>.<br/>
-            <em><%= site_description %> </em> <br/>
-            Please click on <b>Login</b> to log in, or <b>Register</b> to register your name to the system.
+        <p id="response" class="info">
+            <% if(msg != null) { %>
+            <%= msg %>
+            <% } %>
         </p>
-
-        <p>Thank you!</p>
     </div>
     <% } %>
 
-    <script type="text/javascript" src="/scripts/functions.js"></script>
 </div>
 
 </body>
+
 </html>

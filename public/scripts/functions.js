@@ -10,6 +10,14 @@ function showError(msg) {
     response.className = "error";
 }
 
+function setGravatarProfile(email) {
+    var hash = CryptoJS.MD5(email);
+    var img = document.getElementById("gravatar-img");
+    img.src = "http://www.gravatar.com/avatar/" + hash;
+    var a = document.getElementById("gravatar-link");
+    a.href = "http://www.gravatar.com/" + hash;
+};
+
 function validateLogin() {
     var username = document.forms["login"]["username"].value;
     if (username == null || username == "") {
@@ -42,3 +50,4 @@ function validateRegister() {
         return false;
     }
 }
+
