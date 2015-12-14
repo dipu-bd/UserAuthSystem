@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{LogInOutSystem node_modules}" />
-    <file url="PROJECT" libraries="{LogInOutSystem node_modules, mysql-DefinitelyTyped}" />
+    <file url="PROJECT" libraries="{ejs-DefinitelyTyped, express-DefinitelyTyped, mysql-DefinitelyTyped, node-DefinitelyTyped}" />
     <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>

@@ -2,8 +2,19 @@
   "name": "LogInOutSystem",
   "version": "0.0.0",
   "private": true,
+  "license": "BSD-3-Clause",
+  "main": "./bin/www",
   "scripts": {
     "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alulab/userauthsystem"
+  },
+  "author": {
+    "name": "Sudipto Chadnra Das",
+    "email": "dipu.sudipta@gmail.com",
+    "url": "https://github.com/dipu-bd/"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -13,9 +24,6 @@
     "express": "~4.13.1",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
-    "mysql": "~2.9.0",
-    "passport": "~0.3.2",
-    "passport-local": "~1.0.0",
-    "passport-facebook": "~2.0.0"
+    "mysql": "~2.9.0"
   }
 }

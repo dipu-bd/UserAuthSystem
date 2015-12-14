@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/LogInOutSystem.iml" filepath="$PROJECT_DIR$/.idea/LogInOutSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/UserAuthSystem.iml" filepath="$PROJECT_DIR$/.idea/UserAuthSystem.iml" />
     </modules>
   </component>
 </project>
