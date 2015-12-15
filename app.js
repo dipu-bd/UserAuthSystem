@@ -57,3 +57,7 @@ app.use(function (err, req, res, next) {
 
 
 module.exports = app;
+
+//TODO: Add Remember Me checkbox in the Login form.
+//TODO: Redirect user to login form after Registration.
+//TODO: change in a way so that web page does not need to reload every time.
