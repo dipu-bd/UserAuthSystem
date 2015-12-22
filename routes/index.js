@@ -51,8 +51,6 @@ router.get('/logout', function (req, res, next) {
 
 /* POST request for login. */
 router.post('/login', function (req, res, next) {
-    console.log(req.cookies);
-
     database.checkUser(req.body.username, req.body.password, function (err, user) {
         if (err) {
             config.page = "login";
@@ -68,8 +66,6 @@ router.post('/login', function (req, res, next) {
 
 /* POST request for registration. */
 router.post('/register', function (req, res, next) {
-    console.log(req.cookies);
-
     database.addUser(req.body.username, req.body.email, req.body.password, function (err, user) {
         if (err) {
             config.page = "register";
